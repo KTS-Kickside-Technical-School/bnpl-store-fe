@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import Header from "../components/layout/header";
 import Footer from "../components/layout/Footer";
