@@ -1,6 +1,12 @@
-import "./globals.css";
+import {BrowserRouter as Router } from "react-router-dom";
+import AppRouter from "./routes";
+
 function App() {
-  return <div className="text-black capitalize py-9 text-center">Welcome to BNPL E-Commerce</div>;
+  return (
+    <Router>
+      <AppRouter />
+    </Router>
+  );
 }
 
 export default App;
