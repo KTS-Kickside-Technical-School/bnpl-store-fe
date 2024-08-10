@@ -1,10 +1,12 @@
-function App() {
+import {BrowserRouter as Router } from "react-router-dom";
+import AppRouter from "./routes";
 
+function App() {
   return (
-   <div>
-    Welcome to BNPL E-Commerce
-   </div>
-  )
+    <Router>
+      <AppRouter />
+    </Router>
+  );
 }
 
-export default App
+export default App;
