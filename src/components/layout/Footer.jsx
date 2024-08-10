@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
@@ -8,24 +9,16 @@ const Footer = () => {
           <h3 className=" text-[17px] font-bold mb-1">Quick links</h3>
           <ul className="text-[13px] font-normal ">
             <li>
-              <a href="#" className="hover:underline ">
-                Home
-              </a>
+              <Link>Home</Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
-                Products
-              </a>
+              <Link>Products</Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
-                Privacy and Policy
-              </a>
+              <Link>Privacy and Policy</Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
-                Terms and Conditions
-              </a>
+              <Link>Terms and Conditions</Link>
             </li>
           </ul>
         </div>
@@ -33,19 +26,13 @@ const Footer = () => {
           <h3 className="text-[17px] font-bold mb-1">About Us</h3>
           <ul className="text-[13px] font-normal ">
             <li>
-              <a href="#" className="hover:underline">
-                Our Services
-              </a>
+              <Link>Our Services</Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
-                BNPL Services
-              </a>
+              <Link>BNPL Services</Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
-                FAQ
-              </a>
+              <Link>FAQ</Link>
             </li>
           </ul>
         </div>
@@ -53,21 +40,17 @@ const Footer = () => {
           <h3 className="text-[17px] font-bold mb-1">Our Contacts</h3>
           <ul className="text-[13px] font-font-normal">
             <li>
-              <a href="" className="hover:underline">
-                +250790181511
-              </a>
+              <Link>+250790181511</Link>
             </li>
             <li>
-              <a href="" className="hover:underline">
-                bnpl@email.rw
-              </a>
+              <Link>bnpl@gmail.rw</Link>
             </li>
           </ul>
         </div>
       </div>
       <div className="text-center mt-1">
         <p className="text-[11px] font-bold">
-          Developed in Love by Kickside Technical School
+          Developed in Love by <Link>Kickside technical School</Link>
         </p>
       </div>
     </footer>
