@@ -7,12 +7,6 @@ export default {
       center: true,
       padding: "2rem",
     },
-    screens: {
-      sm: "640px",
-      md: "768px",
-      lg: "960px",
-      xl: "1440px",
-    },
     fontFamily: {
       inter: ["inter"],
     },
@@ -26,6 +20,13 @@ export default {
           DEFAULT: "#008FE6",
           hover: "#d6001c",
         },
+      },
+      screens: {
+        sm: "600px", // For small devices (smaller smartphones)
+        md: "768px", // For medium devices (most tablets)
+        lg: "992px", // For large devices (larger tablets and small laptops)
+        xl: "1200px", // For extra large devices (standard laptops and desktops)
+        "2xl": "1600px", // For ultra-wide screens
       },
     },
   },

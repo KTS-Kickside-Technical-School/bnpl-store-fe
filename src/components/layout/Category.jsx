@@ -36,7 +36,7 @@ const  TopCategoryListing= () =>{
   ];
 
  return (
-   <div className="grid grid-cols-1    md:grid-cols-7 lg:grid-cols-7  gap--3 bg-white rounded-md">
+   <div className="flex flex-row md:grid    md:grid-cols-7 lg:grid-cols-7  gap-2 bg-white rounded-md">
      {categories.map((category, index) => (
        <TopCategoryCard
          key={index}

@@ -14,9 +14,9 @@ const ProductPage = () => {
   ];
 
   return (
-    <div className=" p-4 m-6  bg-white shadow-md  flex flex-col md:flex-row ">
+    <div className=" p-4 m-7 max-h-screen w-90  lg:w-auto items-center  bg-white shadow-md  flex flex-col md:flex-row ">
       <div className="flex flex-col   md:flex-row">
-        <div className="flex  md:flex-col mr-4 gap-1 ">
+        <div className="flex  md:flex-col mr-12 gap-1 ">
           {relatedImages.map((image, index) => (
             <img
               key={index}
@@ -32,18 +32,18 @@ const ProductPage = () => {
         <img
           src={currentImage}
           alt="Main product"
-          className={`w-full md:w-64 lg:w-80 h-64 lg:h-80 object-cover rounded-lg ${
+          className={`w-full md:w-64 lg:w-96 h-64 lg:h-96 object-cover rounded-lg ${
             currentImage !== mainImage ? "border-2 border-blue-500" : ""
           }`}
         />
       </div>
 
-      <div className="mt-4 md:mt-0 md:ml-8  flex flex-col justify-between">
+      <div className="mt-4 md:mt-0 md:ml-14  flex flex-col justify-between">
         <div>
-          <h2 className="text-[14px] font-bold ">
+          <h2 className="text-[20px] font-bold ">
             Mini Electric Shaver Pocket Size Waterproof Razor
           </h2>
-          <p className="text-gray-600 text-[12px] mb-1">
+          <p className="text-gray-600 text-[17px] mb-1">
             Washable Portable 2 Head Shaving Beard Trimmer Rechargeable Men
             Shaver Machine
           </p>
@@ -65,7 +65,7 @@ const ProductPage = () => {
             </button>
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mb-12">
+        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mb-52">
           <button className="bg-[#008FE6] text-[14px] text-white py-2 px-3  rounded-lg flex items-center justify-center">
             <AddShoppingCartIcon fontSize="small" className="mr-1" /> Add to
             Cart
