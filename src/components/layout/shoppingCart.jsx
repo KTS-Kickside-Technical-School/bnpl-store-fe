@@ -106,7 +106,7 @@ const ShoppingCart = () => {
             </div>
             <div className="mt-4 ">
               <button className="bg-yellow-500 text-black text-xl w-full py-2 rounded">
-                MTN MoMo
+                Pay With MTN MoMo
               </button>
             </div>
           </div>

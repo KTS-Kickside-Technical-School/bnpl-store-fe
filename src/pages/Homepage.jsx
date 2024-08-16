@@ -77,7 +77,7 @@ const LandingPage = () => {
   return (
     <div>
       <Header />
-      <div className="bg-[#C5D7E2] ">
+      <div className="bg-[#C5D7E2]  ">
         <div className="container ml-2 mr-2 px-4 py-1 ">
       <TopCategoryListing/>
           <h2 className="text-xl font-semibold mb-1">Hot deals</h2>

@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 const TopCategoryCard = ({ imageSrc, categoryTitle }) => {
   return (
-    <div className="border h-full w-[60px]  rounded-md   bg-white shadow-md">
+    <div className="border h-full w-[80px]  rounded-md   bg-white shadow-md">
       <img
         src={imageSrc}
         alt=""
-        className="w-full h-10 object-cover rounded-md  mb-0"
+        className="w-full h-16 object-cover rounded-md  mb-0"
       />
       <Link to="/productview">
 
