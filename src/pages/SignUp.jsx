@@ -7,7 +7,7 @@ function UserSignUp() {
   return (
     <>
       <Header />
-      <div className="main h-screen bg-[#C5D7E2] py-6 sm:px-4 lg:px-5">
+      <div className="main  bg-[#C5D7E2] py-6 sm:px-4 lg:px-5">
         <div className="sm:mx-auto sm:w-full">
           <div className="  flex justify-between items-center bg-[#008FE6] h-[600px]  max-w-screen-2xl rounded ">
             <div className="  hidden sm:block pl-2  ">

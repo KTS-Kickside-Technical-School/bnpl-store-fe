@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({product}) => {
   return (
-    <div className="border h-[300px] w-[230px]  rounded-lg p-2 bg-white shadow-md ">
+    <div className="border h-[300px] w-full  rounded-lg p-2 bg-white shadow-md ">
       <img
         src={product.image}
         alt={product.name}

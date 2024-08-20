@@ -14,7 +14,7 @@ const ProductPage = () => {
   ];
 
   return (
-    <div className=" p-4 m-7 max-h-screen w-90  lg:w-auto items-center  bg-white shadow-md  flex flex-col md:flex-row ">
+    <div className=" p-4 m-7  w-90  lg:w-auto items-center  bg-white shadow-md  flex flex-col md:flex-row ">
       <div className="flex flex-col   md:flex-row">
         <div className="flex  md:flex-col mr-12 gap-1 ">
           {relatedImages.map((image, index) => (
@@ -22,7 +22,7 @@ const ProductPage = () => {
               key={index}
               src={image}
               alt={`Related product ${index}`}
-              className={`w-14 h-12 md:w-16 md:h-14 lg:w-24 lg:h-24 mb-2 cursor-pointer hover:opacity-75 ${
+              className={`w-16 h-14 md:w-16 md:h-14 lg:w-16 lg:h-16 mb-2 cursor-pointer hover:opacity-75 ${
                 currentImage === image ? "border-2 rounded border-blue-500" : ""
               }`}
               onMouseEnter={() => setMainImage(image)}
