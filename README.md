@@ -4,4 +4,4 @@
 
 ### Status Badges
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/715b0f30-fdc1-4088-ba07-027b74f6ede3/deploy-status)](https://app.netlify.com/sites/bnpl-frontend-staging/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d3a5b88b-5b4c-400f-bbfd-51084485df9f/deploy-status)](https://app.netlify.com/sites/sprightly-sprinkles-7df642/deploys)
