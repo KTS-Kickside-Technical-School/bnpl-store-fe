@@ -33,7 +33,7 @@ const Header = () => {
             <div className="container">
               <FavoriteIcon fontSize="small" className="icon" />
               <span className="absolute top-[-1px] right-[10px] bg-blue-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                2
+                0
               </span>
             </div>
           </Link>
@@ -41,7 +41,7 @@ const Header = () => {
             <div className="container">
               <ShoppingCartIcon fontSize="small" />
               <span className="absolute top-[-1px] right-[10px] bg-blue-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                2
+                0
               </span>
               <b className="cart-amount">0.0 RWF</b>
             </div>

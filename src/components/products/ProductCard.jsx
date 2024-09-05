@@ -5,7 +5,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="product-card">
       <div className="img">
-        <img src={product.imageUrl} alt={product.name} />
+        <img src={product.images[0]} alt={product.name} />
       </div>
       <div className="contents">
         <div className="buttons">
@@ -14,9 +14,9 @@ const ProductCard = ({ product }) => {
         </div>
         <h3>{product.name}</h3>
         <div className="price-stock">
-          <span className="price">{product.price}</span>
+          <span className="price">RWF{product.price}</span>
           <div className="stock">
-            <span>Stock:</span> {product.stock} Units
+            <span>Stock:</span> {product.quantity}{product.countingUnit}
           </div>
         </div>
         <p className="description">{product.description}</p>
