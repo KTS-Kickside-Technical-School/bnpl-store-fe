@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import Header from "../components/layout/header";
+import Header from "../components/layout/customerHeader";
 import Footer from "../components/layout/Footer";
 
 function UserSignUp() {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Header from "./header"
+import Header from "./customerHeader"
 import Footer from "./Footer"
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 

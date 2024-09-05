@@ -1,5 +1,5 @@
 import Footer from "../components/layout/Footer"
-import Header from "../components/layout/header"
+import Header from "../components/layout/customerHeader"
 import ProductPage from "../components/layout/viewSingleProduct"
 
 

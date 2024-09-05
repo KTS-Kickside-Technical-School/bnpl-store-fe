@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import Header from "../components/layout/header";
+import Header from "../components/layout/customerHeader";
 import Footer from "../components/layout/Footer";
 
 function UserLogin() {
