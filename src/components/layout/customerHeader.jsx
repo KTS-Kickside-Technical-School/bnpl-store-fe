@@ -3,13 +3,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
-
+import logo from "../../assets/images/kickshop_logo.png"
 const Header = () => {
   return (
     <header className="customerHeader">
       <div className="logo">
         <Link to="/">
-          <h2 className="text-black  text-[14px]">Logo</h2>
+          <img src={logo} alt="" />
         </Link>
       </div>
       <div className="right">

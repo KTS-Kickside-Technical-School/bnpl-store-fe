@@ -10,11 +10,17 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+export const fetchSingleProduct = createAsyncThunk('products/fetchSingleProduct', async (id) => {
+  const response = await axiosInstance.get(`/api/v1/product/view-specific-product/${id}`);
+  return response.data;
+});
+
 const productSlice = createSlice({
   name: 'products',
   initialState: {
     products: [],
-    status: 'loading',
+    product: {},
+    status: 'idle',
     error: null,
   },
   reducers: {},
@@ -33,6 +39,20 @@ const productSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
         toast.error(state.error, { toastId: 'products-load-error' });
+      })
+      .addCase(fetchSingleProduct.pending, (state) => {
+        state.status = 'loading';
+        toast.info("Loading single product...", { toastId: 'loading-single-product' });
+      })
+      .addCase(fetchSingleProduct.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.product = action.payload.data.product;
+        toast.success("Product loaded successfully!", { toastId: 'succed-single-product' });
+      })
+      .addCase(fetchSingleProduct.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+        toast.error(state.error, { toastId: 'product-load-error' });
       });
   },
 });
