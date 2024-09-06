@@ -23,14 +23,20 @@ const ProductList = () => {
   }
 
   return (
-    <div className="products-list">
-      {products && products.length > 0 ? (
-        products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))
-      ) : (
-        <ErrorComponent error={"No products available"} />
-      )}
+    <div className="products-list-container">
+      <h1>
+        Hot deals
+      </h1>
+      <div className="products-list">
+
+        {products && products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        ) : (
+          <ErrorComponent error={"No products available"} />
+        )}
+      </div>
     </div>
   );
 };

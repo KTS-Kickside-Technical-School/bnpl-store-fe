@@ -12,7 +12,7 @@ function AppRouter() {
       <Route path="/" element={<LandingPage />}></Route>
       <Route path="/login" element={<UserLogin />}></Route>
       <Route path="/signup" element={<UserSignUp />}></Route>
-      <Route path="/productview" element={<ProductView />}></Route>
+      <Route path="/product/:id" element={<ProductView />}></Route>
       <Route path="/viewCart" element={<ShoppingCart />}></Route>
 
       {/* <Route path="" element></Route> */}

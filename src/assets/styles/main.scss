@@ -8,7 +8,7 @@ $white-color: #fff;
 $unwhite-color: #dbdbdb;
 $danger-color: #fc3131;
 
-$error-background:#f8d7da;
+$error-background: #f8d7da;
 $error-border: #f5c6cb;
 $error-color: #721c24;
 
@@ -19,8 +19,12 @@ $error-color: #721c24;
     font-size: 22px;
     text-decoration: none;
 }
+
 body {
     background: $background-color;
 }
 
-
+h1 {
+    font-size: 26px;
+    color: #000;
+}
