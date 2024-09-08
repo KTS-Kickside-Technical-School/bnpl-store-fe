@@ -8,7 +8,6 @@ const LandingPage = () => {
   const [currentUrl, setCurrentUrl] = useState("");
 
   useEffect(() => {
-    // Safely set the URL after component mounts
     setCurrentUrl(window.location.href);
   }, []);
 

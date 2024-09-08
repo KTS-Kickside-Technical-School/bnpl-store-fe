@@ -40,7 +40,7 @@ const Footer = () => {
           <h3>Our Contacts</h3>
           <ul>
             <li>
-              <Link>+250790181511</Link>
+              <Link>+250790118511</Link>
             </li>
             <li>
               <Link to={'mailto:bnpl@gmail.com'}>bnpl@gmail.rw</Link>

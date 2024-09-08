@@ -4,11 +4,11 @@ import ProductPage from "../components/products/ViewSingleProduct";
 
 function ProductView() {
   return (
-    <div className="bg-[#C5D7E2]">
+    <>
       <Header />
       <ProductPage />
       <Footer />
-    </div>
+    </>
   );
 }
 
