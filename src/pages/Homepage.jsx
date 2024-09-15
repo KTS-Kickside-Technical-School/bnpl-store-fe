@@ -1,91 +1,38 @@
-
-import Header from "../components/layout/header";
+import { useEffect, useState } from "react";
+import Header from "../components/layout/customerHeader";
 import Footer from "../components/layout/Footer";
-import ProductList from "../components/layout/ProductList";
-import TopCategoryListing from "../components/layout/Category";
-import image1 from "../assets/image1.jpeg"
-
-
-const products = [
-  {
-    id: 1,
-    name: "i15 Pro Max HD Ultra 16GB+1TB",
-    price: 110000,
-    stock: 134,
-    description:
-      "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard.",
-    image: image1,
-  },
-  {
-    id: 1,
-    name: "i15 Pro Max HD Ultra 16GB+1TB",
-    price: 110000,
-    stock: 134,
-    description:
-      "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard.",
-    image: image1,
-  },
-  {
-    id: 1,
-    name: "i15 Pro Max HD Ultra 16GB+1TB",
-    price: 110000,
-    stock: 134,
-    description:
-      "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard.",
-    image: image1,
-  },
-  {
-    id: 1,
-    name: "i15 Pro Max HD Ultra 16GB+1TB",
-    price: 110000,
-    stock: 134,
-    description:
-      "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard.",
-    image: image1,
-  },
-  {
-    id: 1,
-    name: "i15 Pro Max HD Ultra 16GB+1TB",
-    price: 110000,
-    stock: 134,
-    description:
-      "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard.",
-    image: image1,
-  },
-  {
-    id: 1,
-    name: "i15 Pro Max HD Ultra 16GB+1TB",
-    price: 110000,
-    stock: 134,
-    description:
-      "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard.",
-    image: image1,
-  },
-  {
-    id: 1,
-    name: "i15 Pro Max HD Ultra 16GB+1TB",
-    price: 110000,
-    stock: 134,
-    description:
-      "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard.",
-    image: image1,
-  },
-];
-
+import ProductList from "../components/products/ProductsList";
+import { Helmet } from "react-helmet";
 
 const LandingPage = () => {
+  const [currentUrl, setCurrentUrl] = useState("");
+
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);
   return (
-    <div>
+    <>
+      <Helmet>
+        <title>Homepage | Kickside shop - Your first BNPL Store in Rwanda</title>
+        <meta
+          name="description"
+          content="Welcome to Kickshop, your first BNPL Store in Rwanda. Browse our new brand collection from different countries like China, Korea, Turkey, and even made in Rwanda"
+        />
+        <meta
+          name="keywords"
+          content="e-commerce, Rwanda, Made in Rwanda, Exports, Shopping, Brand New, Our collections, BNPL, Store"
+        />
+        <meta
+          name="og:description"
+          content="Welcome to Kickshop, your first BNPL Store in Rwanda. Browse our new brand collection from different countries like China, Korea, Turkey, and even made in Rwanda"
+        />
+        {currentUrl && <meta property="og:url" content={currentUrl} />}
+      </Helmet>
       <Header />
-      <div className="bg-[#C5D7E2]  ">
-        <div className="container ml-2 mr-2 px-4 py-1 ">
-      <TopCategoryListing/>
-          <h2 className="text-xl font-semibold mb-1">Hot deals</h2>
-          <ProductList products={products}/>
-        </div>
-        <Footer />
-      </div>
-    </div>
+
+      <ProductList />
+      <Footer />
+    </>
   );
 };
 

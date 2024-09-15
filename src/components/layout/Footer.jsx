@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-500  text-white py-4">
-      <div className=" container  m-0 px-4 flex flex-row md:flex-row  justify-between items-start md:items-center">
-        <div className="mb-3 md:mb-0">
-          <h3 className=" text-[17px] font-bold mb-1">Quick links</h3>
+    <footer className="customer-footer">
+      <div className="row">
+        <div className="one">
+          <h3>Quick links</h3>
           <ul className="text-[13px] font-normal ">
             <li>
               <Link>Home</Link>
@@ -22,9 +22,9 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="mb-3 md:mb-0">
-          <h3 className="text-[17px] font-bold mb-1">About Us</h3>
-          <ul className="text-[13px] font-normal ">
+        <div className="one">
+          <h3>About Us</h3>
+          <ul>
             <li>
               <Link>Our Services</Link>
             </li>
@@ -36,22 +36,20 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="mb-3 md:mb-0">
-          <h3 className="text-[17px] font-bold mb-1">Our Contacts</h3>
-          <ul className="text-[13px] font-font-normal">
+        <div className="one">
+          <h3>Our Contacts</h3>
+          <ul>
             <li>
-              <Link>+250790181511</Link>
+              <Link>+250790118511</Link>
             </li>
             <li>
-              <Link>bnpl@gmail.rw</Link>
+              <Link to={'mailto:bnpl@gmail.com'}>bnpl@gmail.rw</Link>
             </li>
           </ul>
         </div>
       </div>
-      <div className="text-center mt-1">
-        <p className="text-[11px] font-bold">
-          Developed in Love by <Link>Kickside technical School</Link>
-        </p>
+      <div className="credit">
+        Developed in Love by  <Link to={'https://www.kickside.rw'} target="_blank">Kickside Tech Team</Link>
       </div>
     </footer>
   );

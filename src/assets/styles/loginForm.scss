@@ -1,0 +1,112 @@
+.login-container {
+    padding: 10px;
+min-height: 90vh;
+    .row {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        background: $white-color;
+        width: 700px;
+        margin: auto;
+        border-radius: 10px;
+
+        .left {
+            flex: 1;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            background: $primary-color;
+            padding: 5px;
+
+            .cont {
+                width: 80%;
+                margin: auto;
+
+                h2 {
+                    color: $white-color;
+                    font-weight: bold;
+                }
+
+                p {
+                    font-size: 16px;
+                    color: $white-color;
+                }
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .right {
+            flex: 1;
+            padding: 10px;
+
+            .cont {
+                width: 85%;
+                margin: auto;
+
+                h2.title {
+                    font-size: 24px;
+                    font-weight: bolder;
+                    color: $dark-gray-color;
+                }
+
+                form {
+                    .field {
+                        display: flex;
+                        flex-direction: column;
+                        margin-top: 5px;
+
+                        .field-row {
+                            display: flex;
+
+                            label {
+                                flex: 1;
+                            }
+
+                            a {
+                                flex: 1;
+                                text-align: right;
+                                font-size: 10px;
+                                margin-top: 5px;
+
+                            }
+                        }
+
+                        input {
+                            outline: 0;
+                            color: $dark-gray-color;
+                            padding: 10px;
+                            border:1px solid $dark-gray-color;
+                        }
+                    }
+
+                    .button-field {
+                        margin-top: 10px;
+
+                        button {
+                            background: $primary-color;
+                            border: 0;
+                            color: $white-color;
+                            display: flex;
+                            padding: 5px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            width: 120px;
+                            align-items: center;
+                            text-align: center;
+                            justify-content: center;
+                        }
+                        p {
+                            margin-top: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

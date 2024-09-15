@@ -1,0 +1,140 @@
+.customerHeader {
+    background: $white-color;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    .logo {
+        width: 90px;
+        padding: 10px;
+
+        img {
+            width: 40px;
+        }
+    }
+
+    .right {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 10px;
+        flex: 1;
+        align-items: right;
+
+        .search-form {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
+            .searchIcon {
+                z-index: 2;
+                padding: 8px;
+                font-size: 25px;
+            }
+
+            .search-field {
+                background: $background-color;
+                padding: 10px;
+                padding-top: 6px;
+                border: 0;
+                border-radius: 10px;
+                width: 100%;
+                margin-left: -50px;
+                height: 25px;
+                padding-left: 50px;
+                outline: 0;
+                font-weight: 600;
+            }
+        }
+
+        .account {
+            margin-left: 10px;
+            padding: 7px;
+
+            .profile-button {
+                display: flex;
+                flex-direction: row;
+                color: $black-color;
+                cursor: pointer;
+
+                .icon {
+                    font-size: 30px;
+                }
+
+                p {
+                    margin-top: 3px;
+                    display: inline-block;
+                    max-width: 80px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .login-button {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+
+                .icon {
+                    color: $black-color;
+                }
+
+                p {
+                    color: $black-color;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .buttons {
+            flex: 2;
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            margin-left: 20px;
+
+            .wish-cart {
+                color: $black-color;
+
+                .container {
+                    display: flex;
+                    margin-right: 0;
+
+                    .icon {
+                        font-size: 24px;
+                    }
+
+                    span {
+                        top: -5px;
+                        left: -35px;
+                        position: relative;
+                        background: $primary-color;
+                        border-radius: 50%;
+                        padding: 7px;
+                        padding-bottom: 10px;
+                        padding-top: 4px;
+                        text-align: center;
+                        font-size: 12px;
+                        width: 8px;
+                        height: 8px;
+                        color: $white-color;
+                    }
+                }
+            }
+
+            .cart-button {
+                display: flex;
+                flex-direction: row;
+
+                .cart-amount {
+                    padding: 0;
+                    margin-left: -20px;
+
+                }
+            }
+        }
+    }
+}

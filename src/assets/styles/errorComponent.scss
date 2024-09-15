@@ -1,0 +1,22 @@
+.error-component {
+  width: 100%;
+  min-height: 80vh;
+  background-color: $error-background;
+  border: 1px solid $error-border;
+
+  .error-message {
+    padding: 20px;
+    color: $error-color;
+    border-radius: 5px;
+    margin: 20px;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
