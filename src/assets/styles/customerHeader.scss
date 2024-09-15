@@ -8,6 +8,7 @@
     .logo {
         width: 90px;
         padding: 10px;
+
         img {
             width: 40px;
         }
@@ -51,6 +52,26 @@
         .account {
             margin-left: 10px;
             padding: 7px;
+
+            .profile-button {
+                display: flex;
+                flex-direction: row;
+                color: $black-color;
+                cursor: pointer;
+
+                .icon {
+                    font-size: 30px;
+                }
+
+                p {
+                    margin-top: 3px;
+                    display: inline-block;
+                    max-width: 80px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
 
             .login-button {
                 display: flex;

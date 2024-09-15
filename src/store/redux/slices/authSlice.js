@@ -11,6 +11,24 @@ export const createAccount = createAsyncThunk('auth/userCreateAccount', async (u
     }
 });
 
+export const verfiyAccount = createAsyncThunk('/auth/userVerifyAccount', async (data, { rejectWithValue }) => {
+    try {
+        const response = await axiosInstance.post('/api/v1/auth/verify-email', data)
+        return response.data
+    } catch (error) {
+        return rejectWithValue(error.response ? error.response.data.message : error.message);
+    }
+})
+
+export const userLogin = createAsyncThunk('/auth/userLogin', async (data, { rejectWithValue }) => {
+    try {
+        const response = await axiosInstance.post('/api/v1/auth/login', data)
+        return response.data
+    } catch (error) {
+        return rejectWithValue(error.response ? error.response.data.message : error.message);
+    }
+})
+
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
@@ -21,12 +39,13 @@ const authSlice = createSlice({
     },
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(createAccount.pending, (state) => {
-            state.status = 'loading';
-            state.isLoggedIn = false;
-            state.isAccountCreated = false;
-            toast.info("Creating account, please wait..", { toastId: 'creating-account' });
-        })
+        builder
+            .addCase(createAccount.pending, (state) => {
+                state.status = 'loading';
+                state.isLoggedIn = false;
+                state.isAccountCreated = false;
+                toast.info("Creating account, please wait..", { toastId: 'creating-account' });
+            })
             .addCase(createAccount.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 state.isLoggedIn = false;
@@ -36,8 +55,36 @@ const authSlice = createSlice({
             .addCase(createAccount.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.payload
-                console.log(state.error)
-                toast.error(state.error + "kkk", { toastId: 'creating-account-failed' });
+                toast.error(state.error, { toastId: 'creating-account-failed' });
+            })
+            .addCase(verfiyAccount.pending, (state) => {
+                state.status = "loading";
+                state.isLoggedIn = false;
+                toast.info("Verifying account, please wait..", { toastId: 'verifying-account' });
+            })
+            .addCase(verfiyAccount.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.isLoggedIn = false;
+            })
+            .addCase(verfiyAccount.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.payload
+                toast.error(state.error, { toastId: 'verifying-account-failed' });
+            })
+            .addCase(userLogin.pending, (state) => {
+                state.status = "loading";
+                state.isLoggedIn = false;
+                toast.info("Logging in, please wait..", { toastId: 'logging-in' });
+            })
+            .addCase(userLogin.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.isLoggedIn = true;
+                toast.success("Logged in successfully!", { toastId: 'logged-in-successfully' });
+            })
+            .addCase(userLogin.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.payload
+                toast.error(state.error, { toastId: 'logging-in-failed' });
             });
     }
 });

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async () => {
-    const response = await axiosInstance.get('/api/v1/product/view-all-products');
+    const response = await axiosInstance.get('/api/v1/product/customer-view-products');
     return response.data;
   }
 );
@@ -28,16 +28,17 @@ const productSlice = createSlice({
     builder
       .addCase(fetchProducts.pending, (state) => {
         state.status = 'loading';
-        toast.info("Loading products...", { toastId: 'loading-products' });
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.products = action.payload.data.products;
-        toast.success("Products loaded successfully!", { toastId: 'products-loaded-success' });
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+        if (state.error === "Request failed with status code 404") {
+          state.error = "No products found";
+        }
         toast.error(state.error, { toastId: 'products-load-error' });
       })
       .addCase(fetchSingleProduct.pending, (state) => {

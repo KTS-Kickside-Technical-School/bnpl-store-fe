@@ -13,7 +13,7 @@
 
         .product-card {
             width: 350px;
-            height: 550px;
+            height: 600px;
             background: $white-color;
             margin: 15px;
             border-radius: 10px;
@@ -53,6 +53,11 @@
                         color: $black-color;
                         font-style: italic;
                         cursor: pointer;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                 }
 
@@ -76,7 +81,7 @@
                     a {
                         color: $black-color;
                         display: -webkit-box;
-                        -webkit-line-clamp: 3;
+                        -webkit-line-clamp: 4;
                         -webkit-box-orient: vertical;
                         overflow: hidden;
                         text-overflow: ellipsis;

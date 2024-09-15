@@ -14,7 +14,7 @@ function UserLogin() {
   return (
     <>
       <Helmet>
-        <title>Log into your account - Kickshop | Your first BNPL Store in Rwanda</title>
+        <title>Log into your account | Kickside Shop - Your first BNPL Store in Rwanda</title>
         <meta
           name="description"
           content="Welcome to Kickshop login Page, your first BNPL Store in Rwanda. 
