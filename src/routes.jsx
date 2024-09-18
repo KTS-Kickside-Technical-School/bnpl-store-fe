@@ -16,7 +16,7 @@ function AppRouter() {
       <Route path="/signup" element={<UserSignUp />}></Route>
       <Route path="/verify-account" element={<VerifyAccount/>} />
       <Route path="/product/:id" element={<ProductView />}></Route>
-      <Route path="/viewCart" element={<ShoppingCart />}></Route>
+      <Route path="/shopping-cart" element={<ShoppingCart />}></Route>
       <Route path="*" element={<CustomersNotFound />} />
     </Routes>
   );

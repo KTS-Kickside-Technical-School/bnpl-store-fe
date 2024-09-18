@@ -78,7 +78,7 @@ const Header = () => {
               </span>
             </div>
           </Link>
-          <Link to="/viewCart" className="cart-button wish-cart">
+          <Link to="/shopping-cart" className="cart-button wish-cart">
             <div className="container">
               <ShoppingCartIcon fontSize="small" />
               <span className="absolute top-[-1px] right-[10px] bg-blue-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
