@@ -30,10 +30,18 @@ const LoginForm = () => {
                 if (response.meta.requestStatus === 'fulfilled') {
                     toast.success('Login successful!', { toastId: 'form-success' });
                     const profile = await dispatch(userViewProfile())
-                    console.log("profile", profile)
                     localStorage.setItem("token", response.payload.data.newSession.token);
 
-                    // navigate('/');
+                    if (profile.payload.data.userProfile.role === "admin") {
+                        navigate('/admin/dashboard');
+                    }
+                    else if (profile.payload.data.userProfile.role === "customer") {
+                        navigate("/")
+                    }
+                    else {
+                        localStorage.clear();
+                        toast.error("Unkown error occured")
+                    }
                 } else {
                     toast.error(response.payload);
                 }

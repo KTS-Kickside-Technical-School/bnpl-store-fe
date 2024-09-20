@@ -39,6 +39,11 @@
                 .buttons {
                     text-align: right;
 
+                    button {
+                        border: 0;
+                        margin-left: 10px;
+                    }
+
                     .wish-list {
                         color: $danger-color;
                     }

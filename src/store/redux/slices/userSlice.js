@@ -16,9 +16,10 @@ export const userViewProfile = createAsyncThunk(
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    profile: null, 
-    status: "idle", 
-    error: null,   
+    profile: null,
+    status: "idle",
+    error: null,
+    isLoggedIn: false
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -27,13 +28,14 @@ const userSlice = createSlice({
         state.status = "loading";
       })
       .addCase(userViewProfile.fulfilled, (state, action) => {
-        state.status = "succeeded"; 
-        state.profile = action.payload.data; 
+        state.status = "succeeded";
+        state.profile = action.payload.data.userProfile;
         state.error = null;
+        state.isLoggedIn = true;
       })
       .addCase(userViewProfile.rejected, (state, action) => {
         state.status = "failed";
-        state.profile = null; 
+        state.profile = null;
         state.error = action.payload || "Failed to load profile";
       });
   },

@@ -4,35 +4,23 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/kickshop_logo.png";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { userViewProfile } from "../../store/redux/slices/userSlice";
-import CircularProgress from '@mui/material/CircularProgress'; // Import MUI CircularProgress for loading spinner
+import { getCartItems } from "../../store/redux/slices/cartSlice"; 
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(true); 
+
+  const { cartItems, totalQuantity, totalPrice, status, error } = useSelector((state) => state.carts);
+  const { profile, isLoggedIn } = useSelector((state) => state.user);
+  const loadingCart = status === "loading"; 
+  const loadingProfile = status === "loading";
 
   useEffect(() => {
-    const getUserProfile = async () => {
-      try {
-        const response = await dispatch(userViewProfile());
-        if (response?.payload?.data?.userProfile) {
-          setIsLoggedIn(true);
-          setProfile(response.payload.data.userProfile);
-        } else {
-          setIsLoggedIn(false);
-        }
-      } catch (error) {
-        console.error("Failed to fetch user profile: ", error);
-        setIsLoggedIn(false);
-      } finally {
-        setLoading(false); 
-      }
-    };
-    getUserProfile();
+    dispatch(userViewProfile());
+    dispatch(getCartItems());
   }, [dispatch]);
 
   return (
@@ -53,14 +41,14 @@ const Header = () => {
           />
         </div>
         <div className="account">
-          {loading ? (
+          {loadingProfile || loadingCart ? (
             <div className="loading-spinner">
               <CircularProgress size={24} />
             </div>
-          ) : isLoggedIn ? (
+          ) : profile ? (
             <Link to="/profile" className="profile-button">
               <AccountCircleIcon fontSize="small" className="icon" />
-              <p>{profile.email.split('@')[0]}</p>
+              <p>{profile?.email.split('@')[0]}</p>
             </Link>
           ) : (
             <Link to="/login" className="login-button">
@@ -81,10 +69,11 @@ const Header = () => {
           <Link to="/shopping-cart" className="cart-button wish-cart">
             <div className="container">
               <ShoppingCartIcon fontSize="small" />
+              {/* Dynamically display total quantity and total price */}
               <span className="absolute top-[-1px] right-[10px] bg-blue-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                0
+                {totalQuantity || 0}
               </span>
-              <b className="cart-amount">0.0 RWF</b>
+              <b className="cart-amount">{totalPrice ? totalPrice.toFixed(2) : '0.00'} RWF</b>
             </div>
           </Link>
         </div>
