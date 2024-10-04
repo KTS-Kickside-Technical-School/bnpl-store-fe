@@ -4,7 +4,7 @@ import UserLogin from "./pages/LoginPage";
 import LandingPage from "./pages/Homepage";
 import UserSignUp from "./pages/SignUp";
 import ProductView from "./pages/ProductView";
-import ShoppingCart from "./components/layout/shoppingCart";
+import ShoppingCart from "./pages/shoppingCart";
 import CustomersNotFound from "./pages/CustomersNotFound";
 import VerifyAccount from "./pages/VerifyAccount";
 
@@ -16,7 +16,7 @@ function AppRouter() {
       <Route path="/signup" element={<UserSignUp />}></Route>
       <Route path="/verify-account" element={<VerifyAccount/>} />
       <Route path="/product/:id" element={<ProductView />}></Route>
-      <Route path="/viewCart" element={<ShoppingCart />}></Route>
+      <Route path="/shopping-cart" element={<ShoppingCart />}></Route>
       <Route path="*" element={<CustomersNotFound />} />
     </Routes>
   );

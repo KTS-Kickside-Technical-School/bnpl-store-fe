@@ -29,6 +29,15 @@ export const userLogin = createAsyncThunk('/auth/userLogin', async (data, { reje
     }
 })
 
+export const userLogout = createAsyncThunk("/auth/userLogout", async (_, { rejectWithValue }) => {
+    try {
+        const response = await axiosInstance.post('/api/v1/auth/logout');
+        return response.data
+    } catch (error) {
+        return rejectWithValue(error.message);
+    }
+})
+
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
@@ -74,17 +83,28 @@ const authSlice = createSlice({
             .addCase(userLogin.pending, (state) => {
                 state.status = "loading";
                 state.isLoggedIn = false;
-                toast.info("Logging in, please wait..", { toastId: 'logging-in' });
             })
             .addCase(userLogin.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 state.isLoggedIn = true;
-                toast.success("Logged in successfully!", { toastId: 'logged-in-successfully' });
             })
             .addCase(userLogin.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.payload
                 toast.error(state.error, { toastId: 'logging-in-failed' });
+            })
+            .addCase(userLogout.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(userLogout.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.isLoggedIn = false;
+                toast.success("Logged out successfully!", { toastId: 'logged-out-successfully' });
+            })
+            .addCase(userLogout.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.payload
+                toast.error(state.error, { toastId: 'logging-out-failed' });
             });
     }
 });

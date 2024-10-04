@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import loginPhoto from '../../assets/images/loginPhoto.png';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
@@ -13,29 +13,50 @@ const LoginForm = () => {
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
+    const { profile } = useSelector((state) => state.user);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            dispatch(userViewProfile());
+        }
+    }, [dispatch]);
 
     const formik = useFormik({
         initialValues: {
             email: '',
-            password: ''
+            password: '',
         },
         validationSchema: Yup.object({
             email: Yup.string().email('Invalid email').required('Email is required'),
-            password: Yup.string().required('Password is required')
+            password: Yup.string()
+                .min(8, 'Password must be at least 8 characters')
+                .required('Password is required'),
         }),
         onSubmit: async (values) => {
             setLoading(true);
             try {
-                const response = await dispatch(userLogin(values))
-                if (response.meta.requestStatus === 'fulfilled') {
-                    toast.success('Login successful!', { toastId: 'form-success' });
-                    const profile = await dispatch(userViewProfile())
-                    console.log("profile", profile)
-                    localStorage.setItem("token", response.payload.data.newSession.token);
+                const response = await dispatch(userLogin(values));
+                if (response.payload?.message === "Logged Sucessfully") {
+                    const token = response.payload?.data?.newSession?.token;
+                    localStorage.setItem("token", token);
 
-                    // navigate('/');
+                    const profileResponse = await dispatch(userViewProfile());
+                    const userProfile = profileResponse?.payload?.data?.userProfile;
+
+                    if (userProfile?.role === "admin") {
+                        toast.success('Login successful!', { toastId: 'form-success' });
+                        navigate('/admin/dashboard');
+                    } else if (userProfile?.role === "customer") {
+                        toast.success('Login successful!', { toastId: 'form-success' });
+                        navigate("/");
+                    } else {
+                        localStorage.clear();
+                        toast.error("Unknown error occurred");
+                    }
                 } else {
-                    toast.error(response.payload);
+                    toast.error(response.payload?.message || "Login failed.");
                 }
             } catch (error) {
                 toast.error('An error occurred during login.');
@@ -44,17 +65,8 @@ const LoginForm = () => {
             }
         },
         validateOnChange: true,
-        validateOnBlur: true
+        validateOnBlur: true,
     });
-
-    const displayErrors = () => {
-        if (formik.errors.email && formik.touched.email) {
-            toast.error(formik.errors.email, { toastId: 'email-error' });
-        }
-        if (formik.errors.password && formik.touched.password) {
-            toast.error(formik.errors.password, { toastId: 'password-error' });
-        }
-    };
 
     return (
         <div className="login-container">
@@ -77,9 +89,13 @@ const LoginForm = () => {
                                     name="email"
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
+                                    value={formik.values.email}
                                     placeholder="Enter your Email Address"
                                     disabled={loading}
                                 />
+                                {formik.touched.email && formik.errors.email ? (
+                                    <span className="error">{formik.errors.email}</span>
+                                ) : null}
                             </div>
                             <div className="field">
                                 <div className="field-row">
@@ -91,11 +107,14 @@ const LoginForm = () => {
                                     name="password"
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
+                                    value={formik.values.password}
                                     placeholder="Enter your Password"
                                     disabled={loading}
                                 />
+                                {formik.touched.password && formik.errors.password ? (
+                                    <span className="error">{formik.errors.password}</span>
+                                ) : null}
                             </div>
-                            {displayErrors()}
                             <div className="button-field">
                                 <button type="submit" disabled={loading}>
                                     {loading ? 'Signing in...' : (

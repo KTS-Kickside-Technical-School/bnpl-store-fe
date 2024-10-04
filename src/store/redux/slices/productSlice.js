@@ -43,12 +43,10 @@ const productSlice = createSlice({
       })
       .addCase(fetchSingleProduct.pending, (state) => {
         state.status = 'loading';
-        toast.info("Loading single product...", { toastId: 'loading-single-product' });
       })
       .addCase(fetchSingleProduct.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.product = action.payload.data.product;
-        toast.success("Product loaded successfully!", { toastId: 'succed-single-product' });
       })
       .addCase(fetchSingleProduct.rejected, (state, action) => {
         state.status = 'failed';
