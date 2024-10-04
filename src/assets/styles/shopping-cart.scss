@@ -79,7 +79,8 @@
                         padding: 10px;
                         padding-top: 0;
 
-                        .name {
+                        .name a {
+                            color: $black-color;
                             font-weight: bold;
                         }
 
@@ -200,6 +201,10 @@
                     }
                 }
             }
+        }
+
+        .ad {
+            width: 300px;
         }
 
     }

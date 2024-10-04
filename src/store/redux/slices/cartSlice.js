@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../axios/axiosInstance";
 
-// Thunks
 export const addProductToCart = createAsyncThunk(
   "cart/addProductToCart",
   async ({ productId, quantity }, thunkAPI) => {
@@ -10,7 +9,7 @@ export const addProductToCart = createAsyncThunk(
         productId,
         quantity,
       });
-      return response.data; // Ensure this matches the API structure
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -22,14 +21,28 @@ export const getCartItems = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axiosInstance.get("/api/v1/cart/view-cart-items");
-      return response.data; // Ensure this matches the API structure
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-// Slice
+export const removeProductFromCart = createAsyncThunk("cart/removeProductFromCart",
+  async ({ productId }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.delete("/api/v1/cart/remove-product-from-cart", {
+        productId
+      })
+      console.log("Re nbe", response)
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+
+    }
+  }
+)
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -74,7 +87,17 @@ const cartSlice = createSlice({
       .addCase(getCartItems.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload || action.error.message;
-      });
+      })
+      .addCase(removeProductFromCart.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(removeProductFromCart.fulfilled, (state, action) => {
+        state.status = "succeeded";
+      })
+      .addCase(removeProductFromCart.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload || action.error.message;
+      })
   },
 });
 

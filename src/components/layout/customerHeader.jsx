@@ -93,7 +93,7 @@ const Header = () => {
                       <button
                         onClick={() => handleLogout()}
                         className="signout">
-                        <LogoutIcon  className="icon"/>
+                        <LogoutIcon className="icon" />
                         <span>Signout</span>
                       </button>
                     </li>
@@ -121,11 +121,11 @@ const Header = () => {
               <div className="container">
                 <ShoppingCartIcon fontSize="small" />
                 <span className="">
-                  {isLoggedIn ? (
+                  {profile ? (
                     totalQuantity) : 0}
                 </span>
                 <b className="cart-amount">
-                  {isLoggedIn
+                  {profile
                     ? (totalPrice ? totalPrice.toFixed(2) : '0.00')
                     : '0.00'}
                   RWF
